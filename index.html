@@ -1,117 +1,303 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BTC 15M V3"><meta name="theme-color" content="#0b0d12">
-<title>BTC 15M V3</title>
-<style>
-:root{--bg:#0b0d12;--card:#151922;--text:#f5f7fa;--muted:#8d97a6;--line:#292f3a;--green:#35d07f;--red:#ff5c6c;--yellow:#f4c95d;--blue:#68a9ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif}.wrap{max-width:570px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 14px calc(28px + env(safe-area-inset-bottom))}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.brand{font-size:18px;font-weight:850}.status{font-size:12px;color:var(--muted)}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--yellow);margin-right:5px}.ok{background:var(--green)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px}.row{display:flex;justify-content:space-between;align-items:end;gap:12px}.label{font-size:12px;color:var(--muted)}.price{font-size:36px;font-weight:850;line-height:1.05}.target{display:flex;gap:9px;margin-top:12px}.target input{flex:1;min-width:0;background:#10141b;border:1px solid var(--line);border-radius:14px;padding:13px;color:var(--text);font-size:17px}button{background:#fff;color:#111;border:0;border-radius:14px;padding:13px 16px;font-weight:850}.meta{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:13px}
-.hero{text-align:center}.side{font-size:34px;font-weight:900}.higher{color:var(--green)}.lower{color:var(--red)}.neutral{color:var(--yellow)}.prob{font-size:46px;font-weight:900}.sub{color:var(--muted);font-size:13px}.bar{height:9px;background:#252b35;border-radius:99px;overflow:hidden;margin-top:10px}.fill{height:100%;width:50%;background:var(--blue)}
-.badge{display:inline-block;padding:7px 11px;border-radius:999px;font-size:12px;font-weight:850}.badge.strong{background:rgba(53,208,127,.14);color:var(--green)}.badge.medium{background:rgba(244,201,93,.14);color:var(--yellow)}.badge.weak{background:rgba(141,151,166,.14);color:var(--muted)}.badge.red{background:rgba(255,92,108,.14);color:var(--red)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#11151c;padding:12px;border-radius:14px}.metric .v{font-size:17px;font-weight:800;margin-top:4px}.note{font-size:12px;color:var(--muted);line-height:1.6}.blue{color:var(--blue)}
-.lock{border:1px solid var(--line);background:#10141b;border-radius:16px;padding:14px;margin-top:12px}.lockTitle{font-size:13px;color:var(--muted)}.lockMain{font-size:24px;font-weight:900;margin-top:4px}.lockSub{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}.timer{font-variant-numeric:tabular-nums;font-size:22px;font-weight:850}.danger{color:var(--red)}
-.small{font-size:11px;color:var(--muted);line-height:1.55}.hidden{display:none}.foot{text-align:center;font-size:10px;color:#697587;line-height:1.5;margin-top:12px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
+  <title>₿ BTC 15M V4</title>
+  <style>
+    :root{
+      --bg:#0b0d12;--card:#11151d;--line:#252b36;--text:#f5f7fb;
+      --muted:#8e98a8;--green:#54d36a;--red:#ff626c;--yellow:#f1c75b;
+      --blue:#6ea8ff;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
+    .wrap{max-width:760px;margin:0 auto;padding:18px 14px 44px}
+    h1{font-size:28px;margin:4px 0 10px;font-weight:800}
+    .sub{color:var(--muted);font-size:14px;line-height:1.45}
+    .status{display:inline-flex;align-items:center;gap:7px;margin:8px 0 14px;color:#8fe59a;font-size:14px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #17381e}
+    .dot.off{background:var(--red);box-shadow:0 0 0 3px #42191d}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0}
+    .label{color:var(--muted);font-size:14px;margin-bottom:6px}
+    .price{font-size:42px;font-weight:800;letter-spacing:-1px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .box{flex:1 1 210px;min-width:0}
+    .value{font-size:25px;font-weight:750}
+    .small{font-size:12px;color:var(--muted);line-height:1.5}
+    .source{margin-top:8px;font-size:12px;color:var(--muted)}
+    input{
+      width:100%;padding:14px 15px;border-radius:16px;border:1px solid #313847;background:#0d1118;
+      color:var(--text);font-size:20px;outline:none
+    }
+    button{
+      border:0;border-radius:15px;padding:13px 17px;font-weight:750;font-size:15px;cursor:pointer;
+      background:#f4f6fb;color:#101218
+    }
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:560px){.grid{grid-template-columns:1fr}.price{font-size:38px}}
+    .prob{font-size:62px;font-weight:900;line-height:1}
+    .direction{font-size:22px;font-weight:850;margin-bottom:7px}
+    .green{color:var(--green)} .red{color:var(--red)} .yellow{color:var(--yellow)} .blue{color:var(--blue)}
+    .bar{height:16px;background:#222833;border-radius:99px;overflow:hidden;display:flex;margin:14px 0 10px}
+    .bar .hi{background:var(--green);height:100%}.bar .lo{background:var(--red);height:100%}
+    .trigger{font-size:21px;font-weight:800}
+    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#222833;color:#b7c0ce;font-weight:700}
+    .warn{background:#19160d;border-color:#4e421e;color:#e7d48a}
+    .ok{background:#0e1a12;border-color:#204b2b}
+    .mono{font-variant-numeric:tabular-nums}
+    .footer{font-size:12px;color:#6f7785;margin-top:16px;line-height:1.55}
+    details{margin-top:10px} summary{cursor:pointer;color:#bfc6d2}
+  </style>
 </head>
 <body>
 <div class="wrap">
-<div class="top"><div class="brand">₿ BTC 15M V3</div><div class="status"><span id="dot" class="dot"></span><span id="status">连接中</span></div></div>
+  <h1>₿ BTC 15M V4</h1>
+  <div class="sub">专门针对 Coinbase「15 min Bitcoin」页面设计。V4 第一阶段先解决：价格源与目标价分离、自动抓取 KXBTC15M 当前开放市场、避免把普通 BTC 现货价格冒充为预测市场价格。</div>
+  <div class="status"><span id="dot" class="dot"></span><span id="status">正在连接实时数据…</span></div>
 
-<section class="card">
-  <div class="row"><div><div class="label">Coinbase BTC 现货参考价</div><div id="price" class="price">—</div></div><div style="text-align:right"><div class="label">本局剩余</div><div id="count" class="timer">--:--</div></div></div>
-  <div class="target"><input id="target" type="number" inputmode="decimal" placeholder="目标价，例如 118500"><button id="apply">设定</button></div>
-  <div class="meta"><span>目标：<b id="targetShow">未设置</b></span><span id="gap">—</span></div>
-</section>
-
-<section class="card hero">
-  <div class="label">实时模型概率（会变化）</div>
-  <div id="side" class="side neutral">等待目标价</div>
-  <div id="prob" class="prob">50%</div>
-  <div id="sub" class="sub">Higher 50% · Lower 50%</div>
-  <div class="bar"><div id="fill" class="fill"></div></div>
-  <div style="margin-top:10px"><span id="strength" class="badge weak">实时信号：等待</span></div>
-</section>
-
-<section class="card">
-  <div class="lockTitle">入场触发器</div>
-  <div id="lock" class="lock">
-    <div id="lockMain" class="lockMain neutral">WAIT / NO SIGNAL</div>
-    <div id="lockSub" class="lockSub">每15分钟周期前3分钟观察，不在信号不稳定时强行入场。</div>
-    <div id="lockTimer" class="timer" style="margin-top:8px">观察中</div>
+  <div class="card">
+    <div class="label">当前参考价格</div>
+    <div class="price mono" id="current">$—</div>
+    <div class="source" id="priceSource">来源：等待数据</div>
+    <div style="height:10px"></div>
+    <div class="row">
+      <div class="box">
+        <div class="label">15M 目标价格</div>
+        <div class="value mono" id="target">$—</div>
+        <div class="source" id="targetSource">来源：KXBTC15M</div>
+      </div>
+      <div class="box">
+        <div class="label">距离目标</div>
+        <div class="value mono" id="distance">—</div>
+        <div class="source" id="distancePct">—</div>
+      </div>
+    </div>
   </div>
-  <div class="small" style="margin-top:10px">触发条件：周期开始后至少3分钟；模型方向概率≥65%；方向连续稳定约30秒；目标距离处于近期典型波动范围内。触发后信号锁定，不会因为下一秒价格变化而跳来跳去。</div>
-</section>
 
-<section class="card">
-<div class="grid">
-<div class="metric"><div class="label">1m / 3m / 5m动量</div><div id="mom" class="v">—</div></div>
-<div class="metric"><div class="label">15m典型波动</div><div id="sigma" class="v">—</div></div>
-<div class="metric"><div class="label">成交量倍率</div><div id="vol" class="v">—</div></div>
-<div class="metric"><div class="label">模型评分</div><div id="score" class="v">—</div></div>
-<div class="metric"><div class="label">行情源</div><div id="source" class="v">—</div></div>
-<div class="metric"><div class="label">结算基准</div><div class="v">BRTI</div></div>
-</div></section>
+  <div class="card">
+    <div class="label">当前模型概率（V4 基础版）</div>
+    <div class="direction" id="direction">WAIT</div>
+    <div class="prob mono" id="prob">—%</div>
+    <div class="sub mono" id="split">Higher —% · Lower —%</div>
+    <div class="bar"><div class="hi" id="hiBar" style="width:50%"></div><div class="lo" id="loBar" style="width:50%"></div></div>
+    <div class="pill" id="signal">实时信号：弱</div>
+  </div>
 
-<section class="card">
-<div class="label">为什么不能只看 Coinbase 现货价格？</div>
-<div class="note" style="margin-top:8px">Coinbase 官方说明，BTC 15 min 合约最终以 CF Benchmarks BRTI 决定结果；BRTI 是独立基准，结算使用指定结算窗口的指数读数，而不是简单拿 Coinbase App 当时显示的现货价。因此本页面把 Coinbase 价格明确标成“参考价”，不会假装它就是最终结算价。</div>
-<div class="small blue" style="margin-top:10px">目前未接入你的 BRTI API 许可数据，因此“入场触发”属于参考模型，不是官方结算价预测器。</div>
-</section>
+  <div class="card">
+    <div class="label">入场触发器</div>
+    <div class="trigger" id="trigger">WAIT / NO SIGNAL</div>
+    <p class="small" id="triggerText">
+      V4 暂时保守：先确认价格源、目标价和剩余时间，再判断方向。概率达到阈值前不触发。
+    </p>
+  </div>
 
-<section class="card"><div class="note"><b>使用方式：</b>先输入 Coinbase 15M 合约的目标价格。前3分钟只观察。只有达到固定触发条件后，页面才出现“BUY HIGHER”或“BUY LOWER”。没有触发就保持 NO SIGNAL。</div></section>
-<div class="foot">不会自动下单。任何预测概率都不是收益保证。Coinbase Prediction Markets 的实际结算以合约详情中的 source of truth 为准。</div>
+  <div class="card">
+    <div class="grid">
+      <div>
+        <div class="label">公开数据市场</div>
+        <div class="value" id="marketTicker">KXBTC15M</div>
+        <div class="source">Kalshi 公共 Market Data</div>
+      </div>
+      <div>
+        <div class="label">本轮剩余</div>
+        <div class="value mono" id="remain">—</div>
+        <div class="source" id="closeAt">—</div>
+      </div>
+    </div>
+    <details>
+      <summary>数据诊断</summary>
+      <div class="small" id="diagnostics" style="margin-top:10px">等待…</div>
+    </details>
+  </div>
+
+  <div class="card">
+    <div class="label">手动校准（仅用于 V4 调试）</div>
+    <div class="row">
+      <div class="box"><input id="manualPrice" inputmode="decimal" placeholder="输入你页面看到的当前价格"></div>
+      <button id="apply">应用当前价格</button>
+      <button id="clear">恢复自动</button>
+    </div>
+    <div class="small" style="margin-top:10px">
+      如果 Coinbase 页面价格与公开接口暂时不同，可以先输入你页面上的价格测试模型；这不会改变目标价。
+    </div>
+  </div>
+
+  <div class="footer">
+    V4 当前重点是“数据层”，不是最终下注策略。公开接口存在缓存/延迟可能，页面显示与实时市场之间仍可能出现小幅差异。后续版本再处理：短周期趋势、距离目标、波动率、信号持续时间与实际结果回测。
+  </div>
 </div>
 
 <script>
-const S={price:null,target:null,closes:[],volumes:[],source:'—',start:0,lastDir:null,stableSince:0,locked:null};
-const $=id=>document.getElementById(id);const cl=(x,a,b)=>Math.max(a,Math.min(b,x));const pct=(a,b)=>a&&b?(b/a-1)*100:0;
-function fmt(x,d=2){return Number(x).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})}
-function setStatus(ok,t){$('dot').className='dot '+(ok?'ok':'');$('status').textContent=t}
-function periodStart(){const d=new Date();d.setSeconds(0,0);d.setMinutes(Math.floor(d.getMinutes()/15)*15);return d.getTime()}
-function periodSeconds(){return Math.floor((Date.now()-periodStart())/1000)}
-function nextPeriodSeconds(){return 900-periodSeconds()}
-$('apply').onclick=()=>{const x=parseFloat($('target').value);if(Number.isFinite(x)&&x>0){S.target=x;$('targetShow').textContent='$'+fmt(x);resetLock();render()}};
-$('target').addEventListener('keydown',e=>{if(e.key==='Enter')$('apply').click()});
-function resetLock(){S.locked=null;S.lastDir=null;S.stableSince=0}
-function model(){
- if(S.target==null||S.closes.length<8||S.price==null)return null;
- const c=S.closes,v=S.volumes,p=S.price;
- const m1=pct(c[c.length-2],p),m3=pct(c[Math.max(0,c.length-4)],p),m5=pct(c[Math.max(0,c.length-6)],p);
- const r=[];for(let i=1;i<c.length;i++)r.push(Math.log(c[i]/c[i-1]));const rr=r.slice(-30),mean=rr.reduce((a,x)=>a+x,0)/Math.max(1,rr.length),va=rr.length>4?rr.reduce((a,x)=>a+(x-mean)**2,0)/(rr.length-1):1e-6,sd=Math.sqrt(va),sigma=p*sd*Math.sqrt(15);
- const avgv=v.slice(-20).reduce((a,x)=>a+x,0)/Math.max(1,Math.min(20,v.length)),vr=(v.at(-1)||avgv)/(avgv||1);
- const dir=50+18*cl(m1/.10,-1,1)+12*cl(m3/.18,-1,1)+8*cl(m5/.30,-1,1)+4*cl((vr-1)/.5,-1,1);
- const gap=S.target-p,typical=Math.max(sigma,p*.0005),z=gap/typical,raw=cl((dir-50)/50-z,-3,3),hp=cl(1/(1+Math.exp(-2.2*raw)),.08,.92),lp=1-hp;
- return {hp,lp,dir,m1,m3,m5,sigma,vr,gap,typical};
-}
-function render(){
- if(S.price==null)return;$('price').textContent='$'+fmt(S.price);$('source').textContent=S.source;
- const remain=nextPeriodSeconds();$('count').textContent=String(Math.floor(remain/60)).padStart(2,'0')+':'+String(remain%60).padStart(2,'0');
- if(S.target==null)return;
- const g=S.target-S.price;$('gap').textContent=(g>=0?'+':'')+fmt(g)+' ('+(g/S.price*100).toFixed(3)+'%)';const m=model();if(!m)return;
- const side=m.hp>=m.lp?'HIGHER':'LOWER',prob=Math.max(m.hp,m.lp),edge=Math.abs(prob-.5)*2;
- $('side').textContent=side;$('side').className='side '+(side==='HIGHER'?'higher':'lower');$('prob').textContent=(prob*100).toFixed(1)+'%';$('sub').textContent='Higher '+(m.hp*100).toFixed(1)+'% · Lower '+(m.lp*100).toFixed(1)+'%';$('fill').style.width=(m.hp*100)+'%';$('fill').style.background=side==='HIGHER'?'var(--green)':'var(--red)';
- const b=$('strength');b.textContent='实时信号：'+(edge>=.58?'强':edge>=.28?'中':'弱');b.className='badge '+(edge>=.58?'strong':edge>=.28?'medium':'weak');$('mom').textContent=m.m1.toFixed(2)+'% / '+m.m3.toFixed(2)+'% / '+m.m5.toFixed(2)+'%';$('sigma').textContent='±$'+fmt(m.sigma,0);$('vol').textContent=m.vr.toFixed(2)+'x';$('score').textContent=m.dir.toFixed(1);
- updateTrigger(m,side,prob);
-}
-function updateTrigger(m,side,prob){
- if(S.locked){$('lockMain').textContent='🟢 BUY '+S.locked.side;$('lockMain').className='lockMain '+(S.locked.side==='HIGHER'?'higher':'lower');$('lockSub').textContent='信号已锁定：不会因短时波动自动翻转。请在 Coinbase 合约页面核对当前价格、赔率和合约规则后决定。';$('lockTimer').textContent='锁定剩余本局：'+String(Math.floor(nextPeriodSeconds()/60)).padStart(2,'0')+':'+String(nextPeriodSeconds()%60).padStart(2,'0');return}
- const elapsed=periodSeconds();
- if(elapsed<180){$('lockMain').textContent='WAIT / NO SIGNAL';$('lockMain').className='lockMain neutral';$('lockSub').textContent='本局前3分钟观察期，不触发买入。';$('lockTimer').textContent='观察剩余：'+String(Math.floor((180-elapsed)/60)).padStart(2,'0')+':'+String((180-elapsed)%60).padStart(2,'0');return}
- const stableDir=side;
- if(S.lastDir!==stableDir){S.lastDir=stableDir;S.stableSince=Date.now()}
- const stableSec=(Date.now()-S.stableSince)/1000;
- const within=Math.abs(m.gap)<=m.typical*1.15;
- if(prob>=.65&&stableSec>=30&&within){S.locked={side,prob,at:Date.now()};$('lockMain').textContent='🟢 BUY '+side;$('lockMain').className='lockMain '+(side==='HIGHER'?'higher':'lower');$('lockSub').textContent='触发条件满足：概率≥65%、方向稳定≥30秒、目标距离在典型波动范围内。';$('lockTimer').textContent='信号已锁定';return}
- $('lockMain').textContent='⚪ NO SIGNAL';$('lockMain').className='lockMain neutral';$('lockSub').textContent='等待固定条件同时满足，不追着实时概率跳动。';$('lockTimer').textContent='当前稳定：'+Math.floor(stableSec)+'秒';
-}
-function countdownReset(){if(periodStart()!==S.start){S.start=periodStart();resetLock()}}
-async function loadCandles(){try{const r=await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60',{cache:'no-store'});if(!r.ok)throw 0;const d=await r.json(),rows=d.slice().sort((a,b)=>a[0]-b[0]);S.closes=rows.map(x=>+x[4]);S.volumes=rows.map(x=>+x[5]);if(!S.price)S.price=S.closes.at(-1);render()}catch{}}
-async function fallback(){try{const r=await fetch('https://api.coinbase.com/v2/prices/BTC-USD/spot',{cache:'no-store'});if(!r.ok)throw 0;const d=await r.json(),p=+d.data.amount;if(Number.isFinite(p)){S.price=p;S.source='Coinbase';render()}}catch{}}
-function connect(){let ws;try{ws=new WebSocket('wss://advanced-trade-ws.coinbase.com');ws.onopen=()=>{ws.send(JSON.stringify({type:'subscribe',product_ids:['BTC-USD'],channel:'ticker'}));setStatus(true,'实时行情已连接')};ws.onmessage=e=>{try{const d=JSON.parse(e.data);if(d.channel!=='ticker')return;for(const ev of d.events||[])for(const t of ev.tickers||[])if(t.product_id==='BTC-USD'){S.price=+t.price;S.source='Coinbase';render()}}catch{}};ws.onerror=()=>setStatus(false,'重连中');ws.onclose=()=>{setStatus(false,'重新连接');setTimeout(connect,3000)}}catch{setTimeout(connect,3000)}}
-S.start=periodStart();(async()=>{await loadCandles();await fallback();connect();setInterval(fallback,5000);setInterval(loadCandles,60000);setInterval(()=>{countdownReset();render()},250)})();
+(() => {
+  const $ = id => document.getElementById(id);
+  const state = {
+    autoPrice: null, manualPrice: null, target: null, closeTs: null,
+    marketTicker: null, eventTicker: null, lastKalshiTs: null, lastPriceTs: null
+  };
+
+  const KALSHI = "https://external-api.kalshi.com/trade-api/v2";
+
+  function money(x){
+    if (!Number.isFinite(x)) return "$—";
+    return "$" + x.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+  function pct(x){return (x*100).toFixed(1) + "%";}
+  function fmtRemain(ms){
+    if (!Number.isFinite(ms) || ms < 0) return "00:00";
+    const s=Math.floor(ms/1000), m=Math.floor(s/60), sec=s%60;
+    return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  }
+
+  async function fetchJson(url){
+    const r=await fetch(url,{cache:"no-store"});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return await r.json();
+  }
+
+  async function getKalshiMarket(){
+    // Find the currently open market in KXBTC15M.
+    const url = KALSHI + "/markets?series_ticker=KXBTC15M&status=open&limit=10";
+    const data = await fetchJson(url);
+    const markets = Array.isArray(data.markets) ? data.markets : [];
+    if(!markets.length) throw new Error("KXBTC15M 当前没有找到 open market");
+
+    markets.sort((a,b)=>new Date(a.close_time)-new Date(b.close_time));
+    const m=markets[0];
+
+    state.marketTicker=m.ticker || null;
+    state.eventTicker=m.event_ticker || null;
+    state.closeTs=m.close_time ? new Date(m.close_time).getTime() : null;
+    state.lastKalshiTs=Date.now();
+
+    // Different Kalshi versions expose strike/target metadata differently.
+    // We try the common fields first, then parse the title/subtitle.
+    let target = Number(m.strike_price_dollars ?? m.floor_strike_dollars ?? m.target_price_dollars);
+    if(!Number.isFinite(target)){
+      const text=[m.title,m.subtitle,m.yes_sub_title,m.no_sub_title].filter(Boolean).join(" ");
+      const matches=[...text.matchAll(/\$([0-9]{2,6}(?:,\d{3})*(?:\.\d+)?)/g)]
+        .map(x=>Number(x[1].replace(/,/g,"")));
+      if(matches.length) target=matches[0];
+    }
+    if(Number.isFinite(target)) state.target=target;
+
+    $("marketTicker").textContent=state.marketTicker || "KXBTC15M";
+    $("closeAt").textContent=state.closeTs ? "结束：" + new Date(state.closeTs).toLocaleTimeString() : "结束：—";
+    $("target").textContent=money(state.target);
+    $("targetSource").textContent="来源：KXBTC15M 当前开放市场";
+  }
+
+  async function getCoinbaseSpot(){
+    // Public Coinbase Advanced Trade endpoint. This is a fallback/reference feed,
+    // NOT claimed to be the settlement price of the prediction market.
+    const url="https://api.coinbase.com/api/v3/brokerage/market/products/BTC-USD";
+    const data=await fetchJson(url);
+    const p=Number(data.price ?? data.price_amount ?? data.last);
+    if(!Number.isFinite(p)) throw new Error("Coinbase BTC-USD price unavailable");
+    state.autoPrice=p;
+    state.lastPriceTs=Date.now();
+  }
+
+  function model(){
+    const p=state.manualPrice ?? state.autoPrice;
+    const t=state.target;
+    if(!Number.isFinite(p) || !Number.isFinite(t)){
+      $("direction").textContent="WAIT";
+      $("prob").textContent="—%";
+      $("split").textContent="Higher —% · Lower —%";
+      $("signal").textContent="实时信号：等待数据";
+      return;
+    }
+
+    // Conservative baseline. It deliberately avoids pretending that a small
+    // spot/target gap is a high-confidence edge.
+    const gap=(p-t)/Math.max(t,1);
+    let lower=0.5 - Math.tanh(gap*180)*0.12;
+
+    // When the target is very close, pull the model back toward 50/50.
+    const absGap=Math.abs(p-t);
+    if(absGap < 8) lower=0.5 + (lower-0.5)*0.45;
+
+    lower=Math.min(0.68,Math.max(0.32,lower));
+    const higher=1-lower;
+    const isLower=lower>=higher;
+    const maxProb=Math.max(lower,higher);
+
+    $("prob").textContent=pct(maxProb);
+    $("split").textContent=`Higher ${pct(higher)} · Lower ${pct(lower)}`;
+    $("direction").textContent=isLower?"LOWER":"HIGHER";
+    $("direction").className="direction "+(isLower?"red":"green");
+    $("hiBar").style.width=(higher*100)+"%";
+    $("loBar").style.width=(lower*100)+"%";
+    $("signal").textContent="实时信号："+(maxProb>=0.65?"强":"弱");
+    $("signal").className=maxProb>=0.65?"pill ok":"pill";
+
+    // V4 deliberately requires a stronger threshold plus enough margin.
+    if(maxProb>=0.65 && Math.abs(p-t)>=8){
+      $("trigger").textContent=isLower?"LOWER":"HIGHER";
+      $("trigger").style.color=isLower?"var(--red)":"var(--green)";
+      $("triggerText").textContent="达到基础触发阈值；后续版本会再加入多周期一致性、波动率和持续时间过滤。";
+    }else{
+      $("trigger").textContent="WAIT / NO SIGNAL";
+      $("trigger").style.color="var(--yellow)";
+      $("triggerText").textContent=`当前仅作为观察信号。要求：概率≥65%，且价格距离目标至少约 $8。当前距离为 ${money(Math.abs(p-t))}。`;
+    }
+  }
+
+  function render(){
+    const p=state.manualPrice ?? state.autoPrice;
+    $("current").textContent=money(p);
+    $("priceSource").textContent=state.manualPrice!=null
+      ? "来源：手动校准（你的 Coinbase 15M 页面）"
+      : "来源：Coinbase BTC-USD 公开现货接口（仅参考，不等同于结算价）";
+
+    if(Number.isFinite(state.target) && Number.isFinite(p)){
+      const d=p-state.target;
+      $("distance").textContent=(d>=0?"+":"")+money(d).replace("$","$");
+      $("distancePct").textContent=(d>=0?"高于":"低于")+"目标 "+Math.abs(d/state.target*100).toFixed(4)+"%";
+    }else{
+      $("distance").textContent="—"; $("distancePct").textContent="—";
+    }
+
+    $("remain").textContent=fmtRemain((state.closeTs||0)-Date.now());
+    $("diagnostics").innerHTML =
+      `市场：${state.marketTicker||"—"}<br>`+
+      `事件：${state.eventTicker||"—"}<br>`+
+      `现货数据更新时间：${state.lastPriceTs?new Date(state.lastPriceTs).toLocaleTimeString():"—"}<br>`+
+      `市场数据更新时间：${state.lastKalshiTs?new Date(state.lastKalshiTs).toLocaleTimeString():"—"}<br>`+
+      `页面链接：<a href="https://www.coinbase.com/predictions/serie/KXBTC15M" target="_blank" style="color:#8ab4ff">Coinbase 15 min Bitcoin</a>`;
+    model();
+  }
+
+  async function refresh(){
+    try{
+      await Promise.allSettled([getKalshiMarket(),getCoinbaseSpot()]);
+      if(state.target && state.autoPrice){
+        $("dot").className="dot"; $("status").textContent="实时数据已连接";
+      }else{
+        $("dot").className="dot off"; $("status").textContent="部分数据未连接";
+      }
+      render();
+    }catch(e){
+      $("dot").className="dot off"; $("status").textContent="数据连接异常";
+      $("diagnostics").textContent="错误："+e.message;
+      render();
+    }
+  }
+
+  $("apply").onclick=()=>{
+    const v=Number($("manualPrice").value.replace(/,/g,""));
+    if(Number.isFinite(v) && v>0){state.manualPrice=v;render();}
+  };
+  $("clear").onclick=()=>{
+    state.manualPrice=null;$("manualPrice").value="";render();
+  };
+
+  refresh();
+  setInterval(refresh, 5000);
+  setInterval(render, 1000);
+})();
 </script>
 </body>
 </html>
