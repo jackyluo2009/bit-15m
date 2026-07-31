@@ -1,302 +1,294 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b0d12">
-  <title>₿ BTC 15M V4</title>
-  <style>
-    :root{
-      --bg:#0b0d12;--card:#11151d;--line:#252b36;--text:#f5f7fb;
-      --muted:#8e98a8;--green:#54d36a;--red:#ff626c;--yellow:#f1c75b;
-      --blue:#6ea8ff;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
-    .wrap{max-width:760px;margin:0 auto;padding:18px 14px 44px}
-    h1{font-size:28px;margin:4px 0 10px;font-weight:800}
-    .sub{color:var(--muted);font-size:14px;line-height:1.45}
-    .status{display:inline-flex;align-items:center;gap:7px;margin:8px 0 14px;color:#8fe59a;font-size:14px}
-    .dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px #17381e}
-    .dot.off{background:var(--red);box-shadow:0 0 0 3px #42191d}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:12px 0}
-    .label{color:var(--muted);font-size:14px;margin-bottom:6px}
-    .price{font-size:42px;font-weight:800;letter-spacing:-1px}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-    .box{flex:1 1 210px;min-width:0}
-    .value{font-size:25px;font-weight:750}
-    .small{font-size:12px;color:var(--muted);line-height:1.5}
-    .source{margin-top:8px;font-size:12px;color:var(--muted)}
-    input{
-      width:100%;padding:14px 15px;border-radius:16px;border:1px solid #313847;background:#0d1118;
-      color:var(--text);font-size:20px;outline:none
-    }
-    button{
-      border:0;border-radius:15px;padding:13px 17px;font-weight:750;font-size:15px;cursor:pointer;
-      background:#f4f6fb;color:#101218
-    }
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:560px){.grid{grid-template-columns:1fr}.price{font-size:38px}}
-    .prob{font-size:62px;font-weight:900;line-height:1}
-    .direction{font-size:22px;font-weight:850;margin-bottom:7px}
-    .green{color:var(--green)} .red{color:var(--red)} .yellow{color:var(--yellow)} .blue{color:var(--blue)}
-    .bar{height:16px;background:#222833;border-radius:99px;overflow:hidden;display:flex;margin:14px 0 10px}
-    .bar .hi{background:var(--green);height:100%}.bar .lo{background:var(--red);height:100%}
-    .trigger{font-size:21px;font-weight:800}
-    .pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#222833;color:#b7c0ce;font-weight:700}
-    .warn{background:#19160d;border-color:#4e421e;color:#e7d48a}
-    .ok{background:#0e1a12;border-color:#204b2b}
-    .mono{font-variant-numeric:tabular-nums}
-    .footer{font-size:12px;color:#6f7785;margin-top:16px;line-height:1.55}
-    details{margin-top:10px} summary{cursor:pointer;color:#bfc6d2}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<title>₿ BTC 15M V4.1</title>
+<style>
+:root{--bg:#090b10;--card:#12161e;--line:#262d38;--text:#f7f8fb;--muted:#909aaa;--green:#53d56a;--red:#ff626c;--yellow:#f0c85b;--blue:#72a9ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:760px;margin:auto;padding:18px 14px 48px}
+h1{font-size:30px;margin:2px 0 10px;font-weight:850;letter-spacing:-.7px}
+.desc{color:var(--muted);font-size:14px;line-height:1.55}
+.status{display:flex;align-items:center;gap:8px;margin:12px 0 16px;font-size:14px}.dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #17341e}.dot.off{background:var(--red);box-shadow:0 0 0 4px #42191d}.dot.warn{background:var(--yellow);box-shadow:0 0 0 4px #3d3214}
+.card{background:var(--card);border:1px solid var(--line);border-radius:23px;padding:18px;margin:12px 0}
+.label{font-size:14px;color:var(--muted);margin-bottom:7px}.price{font-size:44px;font-weight:850;letter-spacing:-1.3px}.value{font-size:26px;font-weight:800}.source{font-size:12px;color:var(--muted);line-height:1.5;margin-top:5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{min-width:0}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.price{font-size:39px}}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1 1 180px}
+input{width:100%;padding:13px 14px;border-radius:15px;border:1px solid #323a49;background:#0d1118;color:var(--text);font-size:18px;outline:none}
+button{border:0;border-radius:15px;padding:13px 16px;background:#f4f6fb;color:#101218;font-weight:800;font-size:15px}
+.big{font-size:61px;font-weight:900;line-height:1}.direction{font-size:23px;font-weight:900;margin-bottom:8px}
+.green{color:var(--green)}.red{color:var(--red)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}
+.bar{height:16px;background:#242a34;border-radius:99px;overflow:hidden;display:flex;margin:14px 0 10px}.bar>div{height:100%}
+.hi{background:var(--green)}.lo{background:var(--red)}
+.pill{display:inline-block;padding:8px 12px;border-radius:999px;background:#232933;color:#c1c8d3;font-weight:800}.pill.ok{background:#102014;color:#7be58e;border:1px solid #215c2e}
+.trigger{font-size:23px;font-weight:900}.small{font-size:12px;line-height:1.55;color:var(--muted)}
+.mono{font-variant-numeric:tabular-nums}.warnbox{border-color:#4f431e;background:#1a160b}.okbox{border-color:#214b2a;background:#0d1a11}
+.footer{font-size:12px;line-height:1.6;color:#6f7785;margin-top:16px}
+details summary{cursor:pointer;color:#c5ccd6}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.link{color:#8fb8ff;text-decoration:none}
+</style>
 </head>
 <body>
 <div class="wrap">
-  <h1>₿ BTC 15M V4</h1>
-  <div class="sub">专门针对 Coinbase「15 min Bitcoin」页面设计。V4 第一阶段先解决：价格源与目标价分离、自动抓取 KXBTC15M 当前开放市场、避免把普通 BTC 现货价格冒充为预测市场价格。</div>
-  <div class="status"><span id="dot" class="dot"></span><span id="status">正在连接实时数据…</span></div>
+<h1>₿ BTC 15M V4.1</h1>
+<div class="desc">
+这一版只先把“价格层”修正：<b>KXBTC15M 当前合约目标价直接读取 floor_strike</b>，
+BTC 当前价改用 Coinbase Exchange 的公开 BTC-USD ticker，不再使用上一版需要授权的接口。
+</div>
 
-  <div class="card">
-    <div class="label">当前参考价格</div>
-    <div class="price mono" id="current">$—</div>
-    <div class="source" id="priceSource">来源：等待数据</div>
-    <div style="height:10px"></div>
-    <div class="row">
-      <div class="box">
-        <div class="label">15M 目标价格</div>
-        <div class="value mono" id="target">$—</div>
-        <div class="source" id="targetSource">来源：KXBTC15M</div>
-      </div>
-      <div class="box">
-        <div class="label">距离目标</div>
-        <div class="value mono" id="distance">—</div>
-        <div class="source" id="distancePct">—</div>
-      </div>
+<div class="status"><span id="dot" class="dot warn"></span><span id="status">正在连接…</span></div>
+
+<div class="card">
+  <div class="label">当前 BTC 参考价</div>
+  <div class="price mono" id="price">$—</div>
+  <div class="source" id="priceSource">等待 Coinbase Exchange ticker</div>
+
+  <hr>
+
+  <div class="grid">
+    <div class="box">
+      <div class="label">15M 目标价格</div>
+      <div class="value mono" id="target">$—</div>
+      <div class="source">来源：KXBTC15M / floor_strike</div>
+    </div>
+    <div class="box">
+      <div class="label">距离目标</div>
+      <div class="value mono" id="gap">—</div>
+      <div class="source" id="gapPct">—</div>
     </div>
   </div>
+</div>
 
-  <div class="card">
-    <div class="label">当前模型概率（V4 基础版）</div>
-    <div class="direction" id="direction">WAIT</div>
-    <div class="prob mono" id="prob">—%</div>
-    <div class="sub mono" id="split">Higher —% · Lower —%</div>
-    <div class="bar"><div class="hi" id="hiBar" style="width:50%"></div><div class="lo" id="loBar" style="width:50%"></div></div>
-    <div class="pill" id="signal">实时信号：弱</div>
-  </div>
-
-  <div class="card">
-    <div class="label">入场触发器</div>
-    <div class="trigger" id="trigger">WAIT / NO SIGNAL</div>
-    <p class="small" id="triggerText">
-      V4 暂时保守：先确认价格源、目标价和剩余时间，再判断方向。概率达到阈值前不触发。
-    </p>
-  </div>
-
-  <div class="card">
-    <div class="grid">
-      <div>
-        <div class="label">公开数据市场</div>
-        <div class="value" id="marketTicker">KXBTC15M</div>
-        <div class="source">Kalshi 公共 Market Data</div>
-      </div>
-      <div>
-        <div class="label">本轮剩余</div>
-        <div class="value mono" id="remain">—</div>
-        <div class="source" id="closeAt">—</div>
-      </div>
+<div class="card">
+  <div class="grid">
+    <div class="box">
+      <div class="label">当前市场</div>
+      <div class="value mono" id="ticker">KXBTC15M</div>
+      <div class="source" id="event">当前开放合约：—</div>
     </div>
-    <details>
-      <summary>数据诊断</summary>
-      <div class="small" id="diagnostics" style="margin-top:10px">等待…</div>
-    </details>
-  </div>
-
-  <div class="card">
-    <div class="label">手动校准（仅用于 V4 调试）</div>
-    <div class="row">
-      <div class="box"><input id="manualPrice" inputmode="decimal" placeholder="输入你页面看到的当前价格"></div>
-      <button id="apply">应用当前价格</button>
-      <button id="clear">恢复自动</button>
-    </div>
-    <div class="small" style="margin-top:10px">
-      如果 Coinbase 页面价格与公开接口暂时不同，可以先输入你页面上的价格测试模型；这不会改变目标价。
+    <div class="box">
+      <div class="label">本轮剩余</div>
+      <div class="value mono" id="remain">—</div>
+      <div class="source" id="closeTime">结束时间：—</div>
     </div>
   </div>
+</div>
 
-  <div class="footer">
-    V4 当前重点是“数据层”，不是最终下注策略。公开接口存在缓存/延迟可能，页面显示与实时市场之间仍可能出现小幅差异。后续版本再处理：短周期趋势、距离目标、波动率、信号持续时间与实际结果回测。
+<div class="card">
+  <div class="label">当前模型概率（仅基础层）</div>
+  <div class="direction" id="direction">WAIT</div>
+  <div class="big mono" id="prob">—%</div>
+  <div class="desc mono" id="split">Higher —% · Lower —%</div>
+  <div class="bar"><div class="hi" id="hibar" style="width:50%"></div><div class="lo" id="lobar" style="width:50%"></div></div>
+  <span class="pill" id="signal">实时信号：等待数据</span>
+</div>
+
+<div class="card" id="triggerCard">
+  <div class="label">入场触发器</div>
+  <div class="trigger yellow" id="trigger">WAIT / NO SIGNAL</div>
+  <p class="small" id="triggerText">V4.1 先保证价格和目标价正确，再进入下一轮模型优化。</p>
+</div>
+
+<div class="card">
+  <div class="label">手动校准（调试备用）</div>
+  <div class="row">
+    <input id="manual" inputmode="decimal" placeholder="输入你 Coinbase 15M 页面当前价格">
+    <button id="apply">应用</button>
+    <button id="reset">恢复自动</button>
   </div>
+  <p class="small">手动校准只影响“当前参考价”，不会修改 KXBTC15M 自动识别的目标价。</p>
+</div>
+
+<div class="card">
+  <details>
+    <summary>数据诊断</summary>
+    <div class="small" style="margin-top:10px" id="diag">等待…</div>
+  </details>
+</div>
+
+<div class="footer">
+V4.1 不把预测市场合约价格（Higher/Lower 的交易价格）当成 BTC 美元价格。
+当前 BTC 价用于实时观察；目标价来自当前 KXBTC15M 合约。
+最终结算采用 CF Benchmarks BRTI 的规则，因此“屏幕当前价”和最终结算值并不保证完全相同。
+</div>
 </div>
 
 <script>
 (() => {
   const $ = id => document.getElementById(id);
-  const state = {
-    autoPrice: null, manualPrice: null, target: null, closeTs: null,
-    marketTicker: null, eventTicker: null, lastKalshiTs: null, lastPriceTs: null
+  const KALSHI = "https://external-api.kalshi.com/trade-api/v2";
+  const COINBASE = "https://api.exchange.coinbase.com/products/BTC-USD/ticker";
+
+  const S = {
+    price:null, manual:null, target:null, closeTs:null,
+    marketTicker:null, eventTicker:null, priceTime:null,
+    kalshiOk:false, coinbaseOk:false, lastError:"",
   };
 
-  const KALSHI = "https://external-api.kalshi.com/trade-api/v2";
-
   function money(x){
-    if (!Number.isFinite(x)) return "$—";
-    return "$" + x.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+    return Number.isFinite(x)
+      ? "$"+x.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})
+      : "$—";
   }
-  function pct(x){return (x*100).toFixed(1) + "%";}
-  function fmtRemain(ms){
-    if (!Number.isFinite(ms) || ms < 0) return "00:00";
-    const s=Math.floor(ms/1000), m=Math.floor(s/60), sec=s%60;
-    return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  function signedMoney(x){
+    if(!Number.isFinite(x)) return "—";
+    return (x>=0?"+":"-")+money(Math.abs(x));
   }
-
-  async function fetchJson(url){
+  function remain(ms){
+    if(!Number.isFinite(ms)) return "—";
+    if(ms<=0) return "00:00";
+    let s=Math.floor(ms/1000), m=Math.floor(s/60); s%=60;
+    return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+  }
+  async function json(url){
     const r=await fetch(url,{cache:"no-store"});
     if(!r.ok) throw new Error("HTTP "+r.status);
     return await r.json();
   }
 
-  async function getKalshiMarket(){
-    // Find the currently open market in KXBTC15M.
-    const url = KALSHI + "/markets?series_ticker=KXBTC15M&status=open&limit=10";
-    const data = await fetchJson(url);
-    const markets = Array.isArray(data.markets) ? data.markets : [];
-    if(!markets.length) throw new Error("KXBTC15M 当前没有找到 open market");
+  async function loadKalshi(){
+    const url = KALSHI + "/markets?series_ticker=KXBTC15M&status=open&limit=20";
+    const data = await json(url);
+    const list = Array.isArray(data.markets) ? data.markets : [];
+    if(!list.length) throw new Error("KXBTC15M 当前没有 open 市场");
 
-    markets.sort((a,b)=>new Date(a.close_time)-new Date(b.close_time));
-    const m=markets[0];
+    const now=Date.now();
+    list.sort((a,b)=>new Date(a.close_time)-new Date(b.close_time));
 
-    state.marketTicker=m.ticker || null;
-    state.eventTicker=m.event_ticker || null;
-    state.closeTs=m.close_time ? new Date(m.close_time).getTime() : null;
-    state.lastKalshiTs=Date.now();
+    // Select the first contract that has not passed its close time.
+    const m = list.find(x => {
+      const t=Date.parse(x.close_time);
+      return Number.isFinite(t) && t>now-3000;
+    }) || list[0];
 
-    // Different Kalshi versions expose strike/target metadata differently.
-    // We try the common fields first, then parse the title/subtitle.
-    let target = Number(m.strike_price_dollars ?? m.floor_strike_dollars ?? m.target_price_dollars);
-    if(!Number.isFinite(target)){
-      const text=[m.title,m.subtitle,m.yes_sub_title,m.no_sub_title].filter(Boolean).join(" ");
-      const matches=[...text.matchAll(/\$([0-9]{2,6}(?:,\d{3})*(?:\.\d+)?)/g)]
-        .map(x=>Number(x[1].replace(/,/g,"")));
-      if(matches.length) target=matches[0];
+    S.marketTicker=m.ticker || null;
+    S.eventTicker=m.event_ticker || null;
+    S.closeTs=Date.parse(m.close_time);
+    S.target=Number(m.floor_strike);
+
+    if(!Number.isFinite(S.target)) {
+      throw new Error("已找到 KXBTC15M，但 floor_strike 为空");
     }
-    if(Number.isFinite(target)) state.target=target;
-
-    $("marketTicker").textContent=state.marketTicker || "KXBTC15M";
-    $("closeAt").textContent=state.closeTs ? "结束：" + new Date(state.closeTs).toLocaleTimeString() : "结束：—";
-    $("target").textContent=money(state.target);
-    $("targetSource").textContent="来源：KXBTC15M 当前开放市场";
+    S.kalshiOk=true;
   }
 
-  async function getCoinbaseSpot(){
-    // Public Coinbase Advanced Trade endpoint. This is a fallback/reference feed,
-    // NOT claimed to be the settlement price of the prediction market.
-    const url="https://api.coinbase.com/api/v3/brokerage/market/products/BTC-USD";
-    const data=await fetchJson(url);
-    const p=Number(data.price ?? data.price_amount ?? data.last);
-    if(!Number.isFinite(p)) throw new Error("Coinbase BTC-USD price unavailable");
-    state.autoPrice=p;
-    state.lastPriceTs=Date.now();
+  async function loadCoinbase(){
+    const d=await json(COINBASE);
+    const p=Number(d.price);
+    if(!Number.isFinite(p)) throw new Error("Coinbase BTC-USD ticker 没有有效 price");
+    S.price=p;
+    S.priceTime=d.time ? new Date(d.time) : new Date();
+    S.coinbaseOk=true;
   }
 
-  function model(){
-    const p=state.manualPrice ?? state.autoPrice;
-    const t=state.target;
+  function calc(){
+    const p=S.manual!=null ? S.manual : S.price;
+    const t=S.target;
+
     if(!Number.isFinite(p) || !Number.isFinite(t)){
       $("direction").textContent="WAIT";
+      $("direction").className="direction yellow";
       $("prob").textContent="—%";
       $("split").textContent="Higher —% · Lower —%";
       $("signal").textContent="实时信号：等待数据";
+      $("trigger").textContent="WAIT / NO SIGNAL";
+      $("triggerText").textContent="先等价格源和 KXBTC15M 目标价都成功连接。";
       return;
     }
 
-    // Conservative baseline. It deliberately avoids pretending that a small
-    // spot/target gap is a high-confidence edge.
-    const gap=(p-t)/Math.max(t,1);
-    let lower=0.5 - Math.tanh(gap*180)*0.12;
+    // Deliberately conservative baseline:
+    // proximity to strike pulls probability toward 50/50.
+    const d=p-t;
+    const ad=Math.abs(d);
+    const directionUp=d>=0;
+    let edge=Math.min(0.16, Math.tanh(ad/18)*0.16);
+    if(ad<8) edge*=0.35;
+    let higher=0.5 + (directionUp?edge:-edge);
+    higher=Math.max(0.34,Math.min(0.66,higher));
+    const lower=1-higher;
+    const best=Math.max(higher,lower);
 
-    // When the target is very close, pull the model back toward 50/50.
-    const absGap=Math.abs(p-t);
-    if(absGap < 8) lower=0.5 + (lower-0.5)*0.45;
+    $("prob").textContent=(best*100).toFixed(1)+"%";
+    $("split").textContent=`Higher ${(higher*100).toFixed(1)}% · Lower ${(lower*100).toFixed(1)}%`;
+    $("direction").textContent=directionUp?"HIGHER":"LOWER";
+    $("direction").className="direction "+(directionUp?"green":"red");
+    $("hibar").style.width=(higher*100)+"%";
+    $("lobar").style.width=(lower*100)+"%";
 
-    lower=Math.min(0.68,Math.max(0.32,lower));
-    const higher=1-lower;
-    const isLower=lower>=higher;
-    const maxProb=Math.max(lower,higher);
-
-    $("prob").textContent=pct(maxProb);
-    $("split").textContent=`Higher ${pct(higher)} · Lower ${pct(lower)}`;
-    $("direction").textContent=isLower?"LOWER":"HIGHER";
-    $("direction").className="direction "+(isLower?"red":"green");
-    $("hiBar").style.width=(higher*100)+"%";
-    $("loBar").style.width=(lower*100)+"%";
-    $("signal").textContent="实时信号："+(maxProb>=0.65?"强":"弱");
-    $("signal").className=maxProb>=0.65?"pill ok":"pill";
-
-    // V4 deliberately requires a stronger threshold plus enough margin.
-    if(maxProb>=0.65 && Math.abs(p-t)>=8){
-      $("trigger").textContent=isLower?"LOWER":"HIGHER";
-      $("trigger").style.color=isLower?"var(--red)":"var(--green)";
-      $("triggerText").textContent="达到基础触发阈值；后续版本会再加入多周期一致性、波动率和持续时间过滤。";
+    if(best>=0.65 && ad>=8){
+      $("signal").textContent="实时信号：基础强";
+      $("signal").className="pill ok";
+      $("trigger").textContent=directionUp?"HIGHER":"LOWER";
+      $("trigger").className="trigger "+(directionUp?"green":"red");
+      $("triggerText").textContent="达到 V4.1 基础层阈值；后续版本再加入多周期趋势、波动率和持续时间过滤。";
     }else{
+      $("signal").textContent=best>=0.58?"实时信号：中":"实时信号：弱";
+      $("signal").className="pill";
       $("trigger").textContent="WAIT / NO SIGNAL";
-      $("trigger").style.color="var(--yellow)";
-      $("triggerText").textContent=`当前仅作为观察信号。要求：概率≥65%，且价格距离目标至少约 $8。当前距离为 ${money(Math.abs(p-t))}。`;
+      $("trigger").className="trigger yellow";
+      $("triggerText").textContent=`当前只做观察。价格距目标 ${money(ad)}；基础触发要求概率≥65%且距离目标≥$8。`;
     }
   }
 
   function render(){
-    const p=state.manualPrice ?? state.autoPrice;
-    $("current").textContent=money(p);
-    $("priceSource").textContent=state.manualPrice!=null
+    const p=S.manual!=null ? S.manual : S.price;
+    $("price").textContent=money(p);
+    $("priceSource").textContent=S.manual!=null
       ? "来源：手动校准（你的 Coinbase 15M 页面）"
-      : "来源：Coinbase BTC-USD 公开现货接口（仅参考，不等同于结算价）";
+      : S.coinbaseOk
+        ? "来源：Coinbase Exchange BTC-USD public ticker"
+        : "来源：等待 Coinbase Exchange ticker";
 
-    if(Number.isFinite(state.target) && Number.isFinite(p)){
-      const d=p-state.target;
-      $("distance").textContent=(d>=0?"+":"")+money(d).replace("$","$");
-      $("distancePct").textContent=(d>=0?"高于":"低于")+"目标 "+Math.abs(d/state.target*100).toFixed(4)+"%";
+    $("target").textContent=money(S.target);
+    $("ticker").textContent=S.marketTicker || "KXBTC15M";
+    $("event").textContent="当前开放合约："+(S.eventTicker || "—");
+    $("closeTime").textContent=S.closeTs ? "结束时间："+new Date(S.closeTs).toLocaleTimeString() : "结束时间：—";
+    $("remain").textContent=remain(S.closeTs-Date.now());
+
+    if(Number.isFinite(p) && Number.isFinite(S.target)){
+      const d=p-S.target;
+      $("gap").textContent=signedMoney(d);
+      $("gapPct").textContent=(d>=0?"高于":"低于")+"目标 "+(Math.abs(d/S.target)*100).toFixed(4)+"%";
     }else{
-      $("distance").textContent="—"; $("distancePct").textContent="—";
+      $("gap").textContent="—"; $("gapPct").textContent="—";
     }
 
-    $("remain").textContent=fmtRemain((state.closeTs||0)-Date.now());
-    $("diagnostics").innerHTML =
-      `市场：${state.marketTicker||"—"}<br>`+
-      `事件：${state.eventTicker||"—"}<br>`+
-      `现货数据更新时间：${state.lastPriceTs?new Date(state.lastPriceTs).toLocaleTimeString():"—"}<br>`+
-      `市场数据更新时间：${state.lastKalshiTs?new Date(state.lastKalshiTs).toLocaleTimeString():"—"}<br>`+
-      `页面链接：<a href="https://www.coinbase.com/predictions/serie/KXBTC15M" target="_blank" style="color:#8ab4ff">Coinbase 15 min Bitcoin</a>`;
-    model();
+    $("diag").innerHTML =
+      "Kalshi 市场接口："+(S.kalshiOk?"正常":"失败")+"<br>"+
+      "Coinbase BTC-USD："+(S.coinbaseOk?"正常":"失败")+"<br>"+
+      "市场："+(S.marketTicker||"—")+"<br>"+
+      "事件："+(S.eventTicker||"—")+"<br>"+
+      "目标(floor_strike)："+money(S.target)+"<br>"+
+      "BTC 数据时间："+(S.priceTime?S.priceTime.toLocaleTimeString():"—")+"<br>"+
+      "错误："+(S.lastError||"无");
+
+    calc();
   }
 
   async function refresh(){
-    try{
-      await Promise.allSettled([getKalshiMarket(),getCoinbaseSpot()]);
-      if(state.target && state.autoPrice){
-        $("dot").className="dot"; $("status").textContent="实时数据已连接";
-      }else{
-        $("dot").className="dot off"; $("status").textContent="部分数据未连接";
-      }
-      render();
-    }catch(e){
-      $("dot").className="dot off"; $("status").textContent="数据连接异常";
-      $("diagnostics").textContent="错误："+e.message;
-      render();
-    }
+    S.kalshiOk=false; S.coinbaseOk=false;
+    const [k,c]=await Promise.allSettled([loadKalshi(),loadCoinbase()]);
+    if(k.status==="rejected") S.lastError="KXBTC15M："+k.reason.message;
+    else if(c.status==="rejected") S.lastError="Coinbase："+c.reason.message;
+    else S.lastError="无";
+    $("dot").className=(S.kalshiOk&&S.coinbaseOk)?"dot":"dot off";
+    $("status").textContent=(S.kalshiOk&&S.coinbaseOk)?"实时数据已连接":S.kalshiOk?"目标价已连接，BTC价异常":S.coinbaseOk?"BTC价已连接，目标价异常":"数据未完全连接";
+    render();
   }
 
   $("apply").onclick=()=>{
-    const v=Number($("manualPrice").value.replace(/,/g,""));
-    if(Number.isFinite(v) && v>0){state.manualPrice=v;render();}
+    const x=Number($("manual").value.replace(/,/g,""));
+    if(Number.isFinite(x) && x>0){S.manual=x;render();}
   };
-  $("clear").onclick=()=>{
-    state.manualPrice=null;$("manualPrice").value="";render();
-  };
+  $("reset").onclick=()=>{S.manual=null;$("manual").value="";render();};
 
   refresh();
-  setInterval(refresh, 5000);
-  setInterval(render, 1000);
+  setInterval(refresh,4000);
+  setInterval(render,1000);
 })();
 </script>
 </body>
