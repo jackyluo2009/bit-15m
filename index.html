@@ -6,28 +6,30 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#07101d">
-<title>Prediction Quant v0.2</title>
+<title>Prediction Quant v0.3</title>
 <style>
-:root{--bg:#07101d;--panel:#101b2d;--panel2:#142239;--line:#263a5c;--text:#eef5ff;--muted:#9eb0ca;--accent:#69a8ff;--good:#3ddc97;--warn:#f6bd55;--bad:#ff6f7d}
+:root{--bg:#07101d;--panel:#101b2d;--line:#263a5c;--text:#eef5ff;--muted:#9eb0ca;--accent:#69a8ff;--good:#3ddc97;--warn:#f6bd55;--bad:#ff6f7d}
 *{box-sizing:border-box}html,body{margin:0;background:linear-gradient(180deg,#07101d,#0b1530 50%,#07101d);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-body{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
-header{position:sticky;top:0;z-index:10;background:rgba(7,16,29,.93);backdrop-filter:blur(15px);border-bottom:1px solid var(--line);padding:calc(14px + env(safe-area-inset-top)) 18px 14px}
+body{padding-bottom:calc(25px + env(safe-area-inset-bottom))}
+header{position:sticky;top:0;z-index:12;background:rgba(7,16,29,.94);backdrop-filter:blur(15px);border-bottom:1px solid var(--line);padding:calc(14px + env(safe-area-inset-top)) 18px 14px}
 header h1{margin:0;font-size:22px}header p{margin:5px 0 0;color:var(--muted);font-size:12px}
 main{width:min(1180px,94vw);margin:16px auto}.card{background:linear-gradient(180deg,rgba(20,34,57,.98),rgba(14,25,44,.98));border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:15px;box-shadow:0 16px 38px rgba(0,0,0,.22)}
-h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:17px 0 9px;color:#dce8ff}.grid{display:grid;gap:12px}.two{grid-template-columns:1fr 1fr}.four{grid-template-columns:repeat(4,1fr)}
-.live{background:#081426;border:1px solid var(--line);border-radius:14px;padding:14px}.live span{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.live strong{font-size:24px}.live small{display:block;color:var(--muted);margin-top:6px}
+h2{font-size:17px;margin:0 0 13px}.grid{display:grid;gap:12px}.two{grid-template-columns:1fr 1fr}.four{grid-template-columns:repeat(4,1fr)}
+.live{background:#081426;border:1px solid var(--line);border-radius:14px;padding:14px}.live span{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.live strong{font-size:23px}.live small{display:block;color:var(--muted);margin-top:6px;line-height:1.35}
 label{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:12px}input,select{width:100%;padding:12px;background:#091426;color:var(--text);border:1px solid var(--line);border-radius:11px;font-size:15px;outline:none}input:focus,select:focus{border-color:var(--accent)}
 button{border:1px solid var(--line);background:#162641;color:var(--text);border-radius:11px;padding:12px 15px;font-weight:700;font-size:14px;cursor:pointer}.primary{background:var(--accent);color:#07101d;border-color:transparent}.row{display:flex;gap:10px;flex-wrap:wrap}.row button{flex:1}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.metric{background:#091426;border:1px solid var(--line);border-radius:13px;padding:13px}.metric span{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}.metric strong{font-size:18px}
-.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.status{padding:10px 12px;border-radius:11px;background:#091426;border:1px solid var(--line);font-size:12px;color:var(--muted)}
-.notice{border-left:3px solid var(--warn);background:rgba(246,189,85,.08);padding:12px;border-radius:8px;color:#f8dba5;font-size:12px;line-height:1.5}
-canvas{width:100%;height:310px;background:#081325;border:1px solid var(--line);border-radius:13px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:right;font-size:12px}th:first-child,td:first-child{text-align:left}th{color:var(--muted)}
+.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.status{padding:10px 12px;border-radius:11px;background:#091426;border:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.45}
+.notice{border-left:3px solid var(--warn);background:rgba(246,189,85,.08);padding:12px;border-radius:8px;color:#f8dba5;font-size:12px;line-height:1.55}
+.pred-title{font-weight:800;font-size:15px;line-height:1.4}.pred-detail{color:var(--muted);font-size:12px;line-height:1.5;margin-top:6px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pill{background:#091426;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:12px}
+canvas{width:100%;height:300px;background:#081325;border:1px solid var(--line);border-radius:13px}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:760px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:right;font-size:12px}th:first-child,td:first-child{text-align:left}th{color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:11px;padding:12px}
-@media(max-width:850px){.four,.metrics{grid-template-columns:1fr 1fr}}@media(max-width:560px){.two,.four,.metrics{grid-template-columns:1fr}.card{padding:15px}.live strong{font-size:22px}canvas{height:270px}}
+@media(max-width:850px){.four,.metrics{grid-template-columns:1fr 1fr}}@media(max-width:560px){.two,.four,.metrics{grid-template-columns:1fr}.card{padding:15px}.live strong{font-size:22px}canvas{height:260px}}
 </style>
 </head>
 <body>
-<header><h1>Prediction Quant v0.2</h1><p>实时 BTC 现货 · 永续期货 · Funding · 对冲计算</p></header>
+<header><h1>Prediction Quant v0.3</h1><p>自动发现预测市场 · 实时现货/永续 · 对冲计算</p></header>
 <main>
 
 <section class="card">
@@ -38,19 +40,42 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:12px}
 <div class="live"><span>Basis 价差</span><strong id="basisPx">--</strong><small id="basisPct">--</small></div>
 <div class="live"><span>Funding Rate</span><strong id="fundingLive">--</strong><small id="updatedAt">--</small></div>
 </div>
-<div class="row" style="margin-top:12px">
-<button class="primary" id="refreshBtn">立即刷新</button>
-<button id="fillBtn">用实时期货价填入计算器</button>
+<div class="row" style="margin-top:12px"><button class="primary" id="refreshBtn">立即刷新全部</button><button id="fillBtn">用实时期货价填入</button></div>
+<div id="apiStatus" class="status" style="margin-top:10px">正在连接行情接口……</div>
+</section>
+
+<section class="card">
+<h2>预测市场自动读取（Kalshi 公共行情）</h2>
+<div class="grid two">
+<label>市场筛选
+<select id="predFilter">
+<option value="btc">BTC / Bitcoin 全部</option>
+<option value="15">BTC 15分钟相关</option>
+<option value="hour">BTC 每小时相关</option>
+</select></label>
+<label>发现的开放市场
+<select id="marketSelect"><option value="">点击“搜索市场”</option></select></label>
 </div>
-<div class="status" id="apiStatus" style="margin-top:10px">正在连接公开行情接口……</div>
+<div class="row" style="margin-top:12px"><button class="primary" id="discoverBtn">搜索市场</button><button id="loadMarketBtn">读取所选市场</button></div>
+<div id="predictionStatus" class="status" style="margin-top:10px">尚未读取预测市场。</div>
+<div id="marketCard" style="display:none;margin-top:12px">
+<div class="pred-title" id="marketTitle">--</div><div class="pred-detail" id="marketDetail">--</div>
+<div class="pills">
+<span class="pill">YES 买价 <b id="yesAsk">--</b></span>
+<span class="pill">NO 买价 <b id="noAsk">--</b></span>
+<span class="pill">目标价 <b id="autoStrike">--</b></span>
+<span class="pill">剩余 <b id="timeLeft">--</b></span>
+</div>
+<div class="row" style="margin-top:12px"><button id="useYesBtn">使用 YES/Higher</button><button id="useNoBtn">使用 NO/Lower</button></div>
+</div>
 </section>
 
 <section class="card">
 <h2>预测合约参数</h2>
 <div class="grid two">
-<label>方向<select id="side"><option value="higher">Higher</option><option value="lower">Lower</option></select></label>
+<label>方向<select id="side"><option value="higher">Higher / YES</option><option value="lower">Lower / NO</option></select></label>
 <label>目标价 Strike ($)<input id="strike" type="number" step="0.01" value="63000"></label>
-<label>每份价格 ($0–$1)<input id="contractPrice" type="number" step="0.001" min="0.001" max="0.999" value="0.42"></label>
+<label>每份买入价格 ($0–$1)<input id="contractPrice" type="number" step="0.001" min="0.001" max="0.999" value="0.42"></label>
 <label>合约数量<input id="contracts" type="number" min="1" step="1" value="100"></label>
 <label>预测手续费总额 ($)<input id="predictionFee" type="number" min="0" step="0.01" value="1"></label>
 <label>结算规则<select id="tieRule"><option value="strict">Higher &gt; K；Lower &lt; K</option><option value="inclusive">Higher ≥ K；Lower ≤ K</option></select></label>
@@ -85,71 +110,86 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:12px}
 <div class="metric"><span>目标价上方盈亏</span><strong id="aboveStrike">--</strong></div>
 <div class="metric"><span>期货方向</span><strong id="hedgeDirection">--</strong></div>
 <div class="metric"><span>期货仓位</span><strong id="hedgeQty">--</strong></div>
-</div>
-<div id="resultStatus" class="status" style="margin-top:12px">等待计算</div>
+</div><div id="resultStatus" class="status" style="margin-top:12px">等待计算</div>
 </section>
 
 <section class="card"><h2>到期组合盈亏曲线</h2><canvas id="chart"></canvas></section>
 <section class="card"><h2>情景表</h2><div class="table-wrap"><table><thead><tr><th>BTC 到期价</th><th>预测结果</th><th>预测盈亏</th><th>期货盈亏</th><th>组合净盈亏</th></tr></thead><tbody id="scenarioBody"></tbody></table></div></section>
-<section class="card"><div class="notice">实时行情来自公开市场数据接口。Coinbase 现货使用公开市场数据；期货和 Funding 默认尝试 Bybit，失败时自动尝试 OKX。部分地区、网络或浏览器可能阻止某个接口，页面会保留手动输入功能。Prediction 实时报价尚未接入，因此合约价格和目标价仍需手动填写。</div></section>
+<section class="card"><div class="notice">重要：Coinbase 目前没有公开、文档化的 Prediction 行情 API。本版自动读取 Kalshi 的公开市场数据，因为 Coinbase 的预测市场产品与受监管事件合约生态有关，但软件不能保证每个 Kalshi 合约都与 Coinbase App 内合约完全相同。交易前必须核对标题、目标价、截止时间和结算规则。若找不到完全匹配的合约，请继续手动输入。</div></section>
 </main>
-<footer>Prediction Quant v0.2 · 仅用于研究与模拟，不构成投资建议</footer>
+<footer>Prediction Quant v0.3 · 研究与模拟工具</footer>
 
 <script>
-const $=id=>document.getElementById(id), num=id=>{const v=parseFloat($(id).value);return Number.isFinite(v)?v:0}, money=v=>`${v<0?'-':''}$${Math.abs(v).toFixed(2)}`, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
-let liveSpot=null,liveFut=null,liveFunding=null,lastProvider='';
-
+const $=id=>document.getElementById(id),num=id=>{const v=parseFloat($(id).value);return Number.isFinite(v)?v:0},money=v=>`${v<0?'-':''}$${Math.abs(v).toFixed(2)}`,clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+let liveSpot=null,liveFut=null,liveFunding=null,lastProvider='',markets=[],selectedMarket=null,marketTimer=null;
 function setText(id,v,cls=''){const e=$(id);e.textContent=v;e.className=cls}
-function updateBasis(){
- if(liveSpot&&liveFut){const b=liveFut-liveSpot,p=b/liveSpot*100;setText('basisPx',`${b>=0?'+':''}$${b.toFixed(2)}`,b>=0?'good':'bad');setText('basisPct',`${p>=0?'+':''}${p.toFixed(4)}%`)}
+function updateBasis(){if(liveSpot&&liveFut){const b=liveFut-liveSpot,p=b/liveSpot*100;setText('basisPx',`${b>=0?'+':''}$${b.toFixed(2)}`,b>=0?'good':'bad');setText('basisPct',`${p>=0?'+':''}${p.toFixed(4)}%`)}}
+async function fetchCoinbase(){const r=await fetch('https://api.exchange.coinbase.com/products/BTC-USD/ticker',{cache:'no-store'});if(!r.ok)throw Error('Coinbase '+r.status);const d=await r.json();liveSpot=+d.price;setText('spotPx','$'+liveSpot.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));setText('spotMeta',`Bid ${d.bid} · Ask ${d.ask}`);updateBasis()}
+async function fetchBybit(){const r=await fetch('https://api.bybit.com/v5/market/tickers?category=linear&symbol=BTCUSDT',{cache:'no-store'});if(!r.ok)throw Error('Bybit '+r.status);const d=await r.json(),x=d?.result?.list?.[0];if(!x)throw Error('Bybit empty');liveFut=+x.lastPrice;liveFunding=+(x.fundingRate||0);lastProvider='Bybit BTCUSDT';setText('futPx','$'+liveFut.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));setText('futMeta',`${lastProvider} · Mark ${+(x.markPrice||0)}`);setText('fundingLive',(liveFunding*100).toFixed(4)+'%',liveFunding>=0?'warn':'good');updateBasis()}
+async function fetchOKX(){const r=await fetch('https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT-SWAP',{cache:'no-store'});if(!r.ok)throw Error('OKX '+r.status);const d=await r.json(),x=d?.data?.[0];if(!x)throw Error('OKX empty');liveFut=+x.last;lastProvider='OKX BTC-USDT-SWAP';setText('futPx','$'+liveFut.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));setText('futMeta',`${lastProvider} · Bid ${x.bidPx} · Ask ${x.askPx}`);const fr=await fetch('https://www.okx.com/api/v5/public/funding-rate?instId=BTC-USDT-SWAP',{cache:'no-store'});if(fr.ok){const fd=await fr.json();liveFunding=+(fd?.data?.[0]?.fundingRate||0);setText('fundingLive',(liveFunding*100).toFixed(4)+'%',liveFunding>=0?'warn':'good')}updateBasis()}
+async function refreshLive(){let ok1=false,ok2=false,errs=[];$('apiStatus').textContent='正在刷新……';try{await fetchCoinbase();ok1=true}catch(e){errs.push(e.message)}try{await fetchBybit();ok2=true}catch(e){errs.push(e.message);try{await fetchOKX();ok2=true}catch(e2){errs.push(e2.message)}}$('updatedAt').textContent=new Date().toLocaleTimeString('zh-CN');$('apiStatus').textContent=ok1&&ok2?`连接正常：Coinbase Spot + ${lastProvider}`:`部分失败：${errs.join('；')}`;$('apiStatus').className='status '+(ok1&&ok2?'good':'warn')}
+
+function str(m){return [m.title,m.subtitle,m.yes_sub_title,m.no_sub_title,m.ticker,m.event_ticker,m.rules_primary].filter(Boolean).join(' ').toLowerCase()}
+function getAsk(m,side){
+ const dollarKey=side==='yes'?'yes_ask_dollars':'no_ask_dollars',centKey=side==='yes'?'yes_ask':'no_ask';
+ if(m[dollarKey]!=null&&m[dollarKey]!=='')return +m[dollarKey];
+ if(m[centKey]!=null&&m[centKey]!=='')return +m[centKey]/100;
+ const oppositeBid=side==='yes'?(m.no_bid_dollars!=null?+m.no_bid_dollars:(m.no_bid!=null?+m.no_bid/100:null)):(m.yes_bid_dollars!=null?+m.yes_bid_dollars:(m.yes_bid!=null?+m.yes_bid/100:null));
+ return oppositeBid==null?null:1-oppositeBid;
 }
-async function fetchCoinbase(){
- const r=await fetch('https://api.exchange.coinbase.com/products/BTC-USD/ticker',{cache:'no-store'});
- if(!r.ok) throw new Error('Coinbase '+r.status);
- const d=await r.json();liveSpot=parseFloat(d.price);setText('spotPx','$'+liveSpot.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));setText('spotMeta',`Bid ${d.bid} · Ask ${d.ask}`);updateBasis();
+function extractStrike(m){
+ for(const k of ['floor_strike','cap_strike','functional_strike']){
+  if(m[k]!=null&&m[k]!==''&&Number.isFinite(+String(m[k]).replace(/[^0-9.-]/g,'')))return +String(m[k]).replace(/[^0-9.-]/g,'');
+ }
+ const text=[m.title,m.subtitle,m.yes_sub_title,m.rules_primary].filter(Boolean).join(' ');
+ const matches=[...text.matchAll(/\$?\s*([0-9]{2,3}(?:,[0-9]{3})+(?:\.[0-9]+)?|[0-9]{4,6}(?:\.[0-9]+)?)/g)].map(x=>+x[1].replace(/,/g,'')).filter(x=>x>10000&&x<1000000);
+ return matches.length?matches[matches.length-1]:null;
 }
-async function fetchBybit(){
- const r=await fetch('https://api.bybit.com/v5/market/tickers?category=linear&symbol=BTCUSDT',{cache:'no-store'});
- if(!r.ok) throw new Error('Bybit '+r.status);
- const d=await r.json();const x=d?.result?.list?.[0];if(!x)throw new Error('Bybit empty');
- liveFut=parseFloat(x.lastPrice);liveFunding=parseFloat(x.fundingRate||0);lastProvider='Bybit BTCUSDT Perpetual';
- setText('futPx','$'+liveFut.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));
- setText('futMeta',`${lastProvider} · Mark ${parseFloat(x.markPrice||0).toFixed(2)}`);
- setText('fundingLive',(liveFunding*100).toFixed(4)+'%',liveFunding>=0?'warn':'good');updateBasis();
+function closeTime(m){return m.close_time||m.expected_expiration_time||m.latest_expiration_time||m.expiration_time||null}
+function formatLeft(t){if(!t)return'--';let s=Math.floor((new Date(t)-Date.now())/1000);if(s<=0)return'已结束';const h=Math.floor(s/3600);s%=3600;const min=Math.floor(s/60),sec=s%60;return h?`${h}h ${min}m`:`${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
+async function discoverMarkets(){
+ $('predictionStatus').textContent='正在搜索 Kalshi 开放市场……';
+ try{
+  let all=[],cursor='',pages=0;
+  do{
+   const u=new URL('https://external-api.kalshi.com/trade-api/v2/markets');u.searchParams.set('status','open');u.searchParams.set('limit','1000');if(cursor)u.searchParams.set('cursor',cursor);
+   const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('Kalshi '+r.status);const d=await r.json();all.push(...(d.markets||[]));cursor=d.cursor||'';pages++;
+  }while(cursor&&pages<3);
+  const f=$('predFilter').value;
+  markets=all.filter(m=>{const s=str(m);const btc=s.includes('bitcoin')||/\bbtc\b/.test(s);if(!btc)return false;if(f==='15')return s.includes('15 min')||s.includes('15-minute')||s.includes('15 minute');if(f==='hour')return s.includes('hour')||s.includes('hourly');return true}).sort((a,b)=>new Date(closeTime(a)||0)-new Date(closeTime(b)||0));
+  $('marketSelect').innerHTML=markets.length?markets.map((m,i)=>`<option value="${i}">${(m.title||m.yes_sub_title||m.ticker).slice(0,90)}</option>`).join(''):'<option value="">未找到匹配市场</option>';
+  $('predictionStatus').textContent=`找到 ${markets.length} 个匹配的开放市场。请选择后读取。`;
+  $('predictionStatus').className='status '+(markets.length?'good':'warn');
+ }catch(e){$('predictionStatus').textContent=`自动搜索失败：${e.message}。可能是网络/CORS限制，可继续手动输入。`;$('predictionStatus').className='status warn'}
 }
-async function fetchOKX(){
- const r=await fetch('https://www.okx.com/api/v5/market/ticker?instId=BTC-USDT-SWAP',{cache:'no-store'});
- if(!r.ok) throw new Error('OKX '+r.status);const d=await r.json();const x=d?.data?.[0];if(!x)throw new Error('OKX empty');
- liveFut=parseFloat(x.last);lastProvider='OKX BTC-USDT-SWAP';
- setText('futPx','$'+liveFut.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}));setText('futMeta',`${lastProvider} · Bid ${x.bidPx} · Ask ${x.askPx}`);
- const fr=await fetch('https://www.okx.com/api/v5/public/funding-rate?instId=BTC-USDT-SWAP',{cache:'no-store'});
- if(fr.ok){const fd=await fr.json();liveFunding=parseFloat(fd?.data?.[0]?.fundingRate||0);setText('fundingLive',(liveFunding*100).toFixed(4)+'%',liveFunding>=0?'warn':'good')}
- updateBasis();
+async function loadMarket(){
+ const i=+$('marketSelect').value;if(!Number.isInteger(i)||!markets[i])return;
+ const ticker=markets[i].ticker;
+ try{
+  const r=await fetch(`https://external-api.kalshi.com/trade-api/v2/markets/${encodeURIComponent(ticker)}`,{cache:'no-store'});if(!r.ok)throw Error('Kalshi '+r.status);const d=await r.json();selectedMarket=d.market||d;renderMarket(selectedMarket);
+  if(marketTimer)clearInterval(marketTimer);marketTimer=setInterval(refreshSelectedMarket,5000);
+ }catch(e){$('predictionStatus').textContent='读取失败：'+e.message;$('predictionStatus').className='status warn'}
 }
-async function refreshLive(){
- $('apiStatus').textContent='正在刷新……';let spotOK=false,futOK=false,errors=[];
- try{await fetchCoinbase();spotOK=true}catch(e){errors.push(e.message)}
- try{await fetchBybit();futOK=true}catch(e1){errors.push(e1.message);try{await fetchOKX();futOK=true}catch(e2){errors.push(e2.message)}}
- $('updatedAt').textContent=new Date().toLocaleTimeString('zh-CN');
- $('apiStatus').textContent=(spotOK&&futOK)?`连接正常：Coinbase Spot + ${lastProvider}`:`部分接口失败：${errors.join('；')}`;
- $('apiStatus').className='status '+((spotOK&&futOK)?'good':'warn');
+async function refreshSelectedMarket(){if(!selectedMarket?.ticker)return;try{const r=await fetch(`https://external-api.kalshi.com/trade-api/v2/markets/${encodeURIComponent(selectedMarket.ticker)}`,{cache:'no-store'});if(r.ok){const d=await r.json();selectedMarket=d.market||d;renderMarket(selectedMarket)}}catch(e){}}
+function renderMarket(m){
+ const ya=getAsk(m,'yes'),na=getAsk(m,'no'),K=extractStrike(m),ct=closeTime(m);
+ $('marketCard').style.display='block';$('marketTitle').textContent=m.title||m.yes_sub_title||m.ticker;
+ $('marketDetail').textContent=`Ticker: ${m.ticker} · 状态: ${m.status||'open'} · 截止: ${ct?new Date(ct).toLocaleString('zh-CN'):'--'}`;
+ setText('yesAsk',ya==null?'--':`$${ya.toFixed(3)} / ${(1/ya).toFixed(2)}x`);setText('noAsk',na==null?'--':`$${na.toFixed(3)} / ${(1/na).toFixed(2)}x`);setText('autoStrike',K==null?'未识别':'$'+K.toLocaleString());setText('timeLeft',formatLeft(ct));
+ $('predictionStatus').textContent='市场已连接，每 5 秒刷新。请核对它是否与 Coinbase 中的合约完全一致。';$('predictionStatus').className='status good';
 }
+function useMarket(side){if(!selectedMarket)return;const p=getAsk(selectedMarket,side),K=extractStrike(selectedMarket);$('side').value=side==='yes'?'higher':'lower';if(p!=null)$('contractPrice').value=p.toFixed(3);if(K!=null)$('strike').value=K.toFixed(2);if(liveFut)$('futuresEntry').value=liveFut.toFixed(2);const mid=K||liveSpot||liveFut;if(mid){$('minPrice').value=Math.round(mid-500);$('maxPrice').value=Math.round(mid+500)}calculate()}
+
 function futuresSide(){const x=$('futuresSide').value;return x==='auto'?($('side').value==='higher'?'short':'long'):x}
 function wins(S){const K=num('strike'),side=$('side').value,rule=$('tieRule').value;return side==='higher'?(rule==='inclusive'?S>=K:S>K):(rule==='inclusive'?S<=K:S<K)}
-function calcAt(S,qOverride=null){
- const c=clamp(num('contractPrice'),0,1),N=Math.max(0,num('contracts')),pf=Math.max(0,num('predictionFee')),F0=num('futuresEntry'),q=qOverride===null?Math.max(0,num('btcQty')):Math.max(0,qOverride),fs=futuresSide(),fee=Math.max(0,num('futuresFeePct'))/100,slip=Math.max(0,num('slippage')),fund=num('fundingCost');
- const pred=(wins(S)?N:0)-N*c-pf,raw=fs==='long'?q*(S-F0):q*(F0-S),fut=raw-q*(F0+S)*fee-slip-fund;return{pred,fut,total:pred+fut,win:wins(S)}
-}
+function calcAt(S,qOverride=null){const c=clamp(num('contractPrice'),0,1),N=Math.max(0,num('contracts')),pf=Math.max(0,num('predictionFee')),F0=num('futuresEntry'),q=qOverride===null?Math.max(0,num('btcQty')):Math.max(0,qOverride),fs=futuresSide(),fee=Math.max(0,num('futuresFeePct'))/100,slip=Math.max(0,num('slippage')),fund=num('fundingCost');const pred=(wins(S)?N:0)-N*c-pf,raw=fs==='long'?q*(S-F0):q*(F0-S),fut=raw-q*(F0+S)*fee-slip-fund;return{pred,fut,total:pred+fut,win:wins(S)}}
 function grid(q=null,points=241){let lo=num('minPrice'),hi=num('maxPrice');if(hi<lo)[lo,hi]=[hi,lo];if(hi===lo)hi=lo+1;return Array.from({length:points},(_,i)=>{const S=lo+(hi-lo)*i/(points-1);return{S,...calcAt(S,q)}})}
-function optimize(){const maxQ=Math.max(.0001,num('maxQty')),mode=$('optMode').value;let best=0,score=Infinity;for(let i=0;i<=1400;i++){const q=maxQ*i/1400,g=grid(q,121),vals=g.map(x=>x.total),min=Math.min(...vals);let s=mode==='minimax'?-min:Math.abs(vals[0]-vals[vals.length-1])+Math.max(0,-min)*.02;if(s<score){score=s;best=q}}$('btcQty').value=best.toFixed(5);calculate()}
-function calculate(){const c=clamp(num('contractPrice'),0,1),N=num('contracts'),K=num('strike'),g=grid(),vals=g.map(x=>x.total),mx=Math.max(...vals),mn=Math.min(...vals),eps=Math.max(.01,Math.abs(K)*1e-7),below=calcAt(K-eps).total,above=calcAt(K+eps).total;
- setText('predCost',money(N*c+num('predictionFee')));setText('impliedProb',(c*100).toFixed(1)+'%');setText('maxProfit',money(mx),mx>=0?'good':'bad');setText('maxLoss',money(mn),mn>=0?'good':'bad');setText('belowStrike',money(below),below>=0?'good':'bad');setText('aboveStrike',money(above),above>=0?'good':'bad');setText('hedgeDirection',futuresSide()==='long'?'做多':'做空');setText('hedgeQty',num('btcQty').toFixed(5)+' BTC');
- $('resultStatus').textContent=mn>=0?'设定价格区间内最低盈亏非负，但仍需考虑执行和结算风险。':mx>0?'存在盈利区间，但也存在亏损区间。':'设定区间内没有正收益情景。';$('resultStatus').className='status '+(mn>=0?'good':mx>0?'warn':'bad');draw(g);scenarios()
-}
+function optimize(){const maxQ=Math.max(.0001,num('maxQty')),mode=$('optMode').value;let best=0,score=Infinity;for(let i=0;i<=1400;i++){const q=maxQ*i/1400,g=grid(q,121),vals=g.map(x=>x.total),min=Math.min(...vals);let s=mode==='minimax'?-min:Math.abs(vals[0]-vals.at(-1))+Math.max(0,-min)*.02;if(s<score){score=s;best=q}}$('btcQty').value=best.toFixed(5);calculate()}
+function calculate(){const c=clamp(num('contractPrice'),0,1),N=num('contracts'),K=num('strike'),g=grid(),vals=g.map(x=>x.total),mx=Math.max(...vals),mn=Math.min(...vals),eps=Math.max(.01,Math.abs(K)*1e-7),below=calcAt(K-eps).total,above=calcAt(K+eps).total;setText('predCost',money(N*c+num('predictionFee')));setText('impliedProb',(c*100).toFixed(1)+'%');setText('maxProfit',money(mx),mx>=0?'good':'bad');setText('maxLoss',money(mn),mn>=0?'good':'bad');setText('belowStrike',money(below),below>=0?'good':'bad');setText('aboveStrike',money(above),above>=0?'good':'bad');setText('hedgeDirection',futuresSide()==='long'?'做多':'做空');setText('hedgeQty',num('btcQty').toFixed(5)+' BTC');$('resultStatus').textContent=mn>=0?'设定价格区间内最低盈亏非负，但不代表无风险套利。':mx>0?'存在盈利区间，也存在亏损区间。':'设定区间内没有正收益情景。';$('resultStatus').className='status '+(mn>=0?'good':mx>0?'warn':'bad');draw(g);scenarios()}
 function draw(g){const c=$('chart'),ctx=c.getContext('2d'),dpr=devicePixelRatio||1,W=c.clientWidth,H=c.clientHeight;c.width=Math.max(600,W*dpr);c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const p={l:57,r:16,t:18,b:40},xs=g.map(x=>x.S),ys=g.map(x=>x.total);let xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);if(ymax===ymin){ymax++;ymin--}const m=(ymax-ymin)*.14;ymax+=m;ymin-=m;const X=x=>p.l+(x-xmin)/(xmax-xmin)*(W-p.l-p.r),Y=y=>p.t+(ymax-y)/(ymax-ymin)*(H-p.t-p.b);ctx.clearRect(0,0,W,H);ctx.strokeStyle='#263a5c';ctx.lineWidth=1;ctx.font='11px sans-serif';for(let i=0;i<=5;i++){const y=ymin+(ymax-ymin)*i/5;ctx.beginPath();ctx.moveTo(p.l,Y(y));ctx.lineTo(W-p.r,Y(y));ctx.stroke();ctx.fillStyle='#9eb0ca';ctx.textAlign='right';ctx.fillText(money(y),p.l-6,Y(y)+4)}for(let i=0;i<=4;i++){const x=xmin+(xmax-xmin)*i/4;ctx.beginPath();ctx.moveTo(X(x),p.t);ctx.lineTo(X(x),H-p.b);ctx.stroke();ctx.fillStyle='#9eb0ca';ctx.textAlign='center';ctx.fillText('$'+x.toFixed(0),X(x),H-p.b+20)}if(ymin<0&&ymax>0){ctx.strokeStyle='#f6bd55';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(p.l,Y(0));ctx.lineTo(W-p.r,Y(0));ctx.stroke();ctx.setLineDash([])}const K=num('strike');if(K>=xmin&&K<=xmax){ctx.strokeStyle='#ff6f7d';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(X(K),p.t);ctx.lineTo(X(K),H-p.b);ctx.stroke();ctx.setLineDash([])}ctx.strokeStyle='#69a8ff';ctx.lineWidth=2.5;ctx.beginPath();g.forEach((x,i)=>i?ctx.lineTo(X(x.S),Y(x.total)):ctx.moveTo(X(x.S),Y(x.total)));ctx.stroke()}
 function scenarios(){let lo=num('minPrice'),hi=num('maxPrice');if(hi<lo)[lo,hi]=[hi,lo];const K=num('strike'),a=[lo,lo+(hi-lo)*.25,K-.01,K+.01,lo+(hi-lo)*.75,hi].sort((a,b)=>a-b);$('scenarioBody').innerHTML=a.map(S=>{const r=calcAt(S);return`<tr><td>$${S.toFixed(2)}</td><td>${r.win?'赢':'输'}</td><td class="${r.pred>=0?'good':'bad'}">${money(r.pred)}</td><td class="${r.fut>=0?'good':'bad'}">${money(r.fut)}</td><td class="${r.total>=0?'good':'bad'}"><b>${money(r.total)}</b></td></tr>`}).join('')}
-$('refreshBtn').onclick=refreshLive;$('fillBtn').onclick=()=>{if(liveFut){$('futuresEntry').value=liveFut.toFixed(2);const mid=liveSpot||liveFut;$('strike').value=Math.round(mid/50)*50;$('minPrice').value=Math.round(mid-500);$('maxPrice').value=Math.round(mid+500);calculate()}};$('calcBtn').onclick=calculate;$('optBtn').onclick=optimize;window.onresize=calculate;
-document.querySelectorAll('input,select').forEach(e=>e.addEventListener('change',calculate));
-calculate();refreshLive();setInterval(refreshLive,5000);
+
+$('refreshBtn').onclick=()=>{refreshLive();if(selectedMarket)refreshSelectedMarket()};$('fillBtn').onclick=()=>{if(liveFut){$('futuresEntry').value=liveFut.toFixed(2);const mid=liveSpot||liveFut;$('strike').value=Math.round(mid/50)*50;$('minPrice').value=Math.round(mid-500);$('maxPrice').value=Math.round(mid+500);calculate()}};$('discoverBtn').onclick=discoverMarkets;$('loadMarketBtn').onclick=loadMarket;$('useYesBtn').onclick=()=>useMarket('yes');$('useNoBtn').onclick=()=>useMarket('no');$('calcBtn').onclick=calculate;$('optBtn').onclick=optimize;window.onresize=calculate;document.querySelectorAll('input,select').forEach(e=>e.addEventListener('change',calculate));
+calculate();refreshLive();setInterval(()=>{refreshLive();if(selectedMarket)refreshSelectedMarket()},5000);
 </script>
 </body></html>
